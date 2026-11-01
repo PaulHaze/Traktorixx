@@ -1,5 +1,30 @@
-/* Minimal development skin; the palette is defined in sprint 03. */
-WWidgetGroup#Traktorixx, WLabel#PlaceholderLabel {
+/* Temporary block tints. Sprint 03 defines the palette and font. */
+WWidgetGroup#Traktorixx {
     background-color: #202124;
+}
+WLabel#HeaderPlaceholder, WLabel#ReservedFxPlaceholder,
+WLabel#FxPlaceholder, WLabel#MasterPlaceholder, WLabel#MixerPlaceholder,
+WLabel#InfoPlaceholder, WLabel#WaveformPlaceholder,
+WLabel#OverviewPlaceholder, WLabel#TransportPlaceholder, WLabel#BeatgridPlaceholder {
     color: #eeeeee;
+    border: 1px solid #101114;
+}
+WLabel#HeaderPlaceholder, WLabel#ReservedFxPlaceholder {
+    background-color: #24262a;
+}
+WLabel#FxPlaceholder, WLabel#MasterPlaceholder, WLabel#MixerPlaceholder {
+    background-color: #35383d;
+}
+WLabel#InfoPlaceholder, WLabel#TransportPlaceholder {
+    background-color: #30343a;
+}
+WLabel#WaveformPlaceholder {
+    background-color: #1b222a;
+}
+WLabel#OverviewPlaceholder, WLabel#BeatgridPlaceholder {
+    background-color: #292f35;
+}
+QSplitter#LibraryArea::handle {
+    background-color: #101114;
+    width: 2px;
 }

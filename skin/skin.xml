@@ -5,22 +5,131 @@
     <title>Traktorixx</title>
     <author>Paul Hayes</author>
     <version>0.1</version>
-    <description>An original two-deck skin, starting with a minimal placeholder.</description>
+    <description>An original two-deck skin with a Traktor-inspired layout.</description>
     <license>CC BY-NC 4.0</license>
   </manifest>
 
   <ObjectName>Traktorixx</ObjectName>
   <Layout>vertical</Layout>
-  <Size>960,600</Size>
-  <MinimumSize>640,360</MinimumSize>
+  <MinimumSize>1024,720</MinimumSize>
   <SizePolicy>me,me</SizePolicy>
   <Style src="skin:style.qss"/>
   <Children>
-    <Label>
-      <ObjectName>PlaceholderLabel</ObjectName>
-      <Text>Traktorixx — minimal skin</Text>
-      <Alignment>center</Alignment>
-      <SizePolicy>me,me</SizePolicy>
-    </Label>
+    <!-- The upper area grows to 740 px; the library takes the remaining height.
+         The same 320 px centre column aligns the master panel and mixer. -->
+    <WidgetGroup>
+      <ObjectName>PerformanceArea</ObjectName>
+      <Layout>vertical</Layout>
+      <MaximumSize>,740</MaximumSize>
+      <SizePolicy>me,e</SizePolicy>
+      <Children>
+        <Label>
+          <ObjectName>HeaderPlaceholder</ObjectName>
+          <Text>Traktorixx — header</Text>
+          <Alignment>center</Alignment>
+          <Size>me,32f</Size>
+        </Label>
+        <WidgetGroup>
+          <ObjectName>FxRow</ObjectName>
+          <Layout>horizontal</Layout>
+          <Size>me,112f</Size>
+          <Children>
+            <WidgetGroup>
+              <Layout>horizontal</Layout>
+              <SizePolicy>i,me</SizePolicy>
+              <Children>
+                <Label>
+                  <ObjectName>FxPlaceholder</ObjectName>
+                  <Text>FX unit 1</Text>
+                  <Alignment>center</Alignment>
+                  <SizePolicy>i,me</SizePolicy>
+                </Label>
+                <Label>
+                  <ObjectName>ReservedFxPlaceholder</ObjectName>
+                  <Text>Reserved FX</Text>
+                  <Alignment>center</Alignment>
+                  <SizePolicy>i,me</SizePolicy>
+                </Label>
+              </Children>
+            </WidgetGroup>
+            <Label>
+              <ObjectName>MasterPlaceholder</ObjectName>
+              <Text>Master panel</Text>
+              <Alignment>center</Alignment>
+              <Size>320f,me</Size>
+            </Label>
+            <WidgetGroup>
+              <Layout>horizontal</Layout>
+              <SizePolicy>i,me</SizePolicy>
+              <Children>
+                <Label>
+                  <ObjectName>ReservedFxPlaceholder</ObjectName>
+                  <Text>Reserved FX</Text>
+                  <Alignment>center</Alignment>
+                  <SizePolicy>i,me</SizePolicy>
+                </Label>
+                <Label>
+                  <ObjectName>FxPlaceholder</ObjectName>
+                  <Text>FX unit 2</Text>
+                  <Alignment>center</Alignment>
+                  <SizePolicy>i,me</SizePolicy>
+                </Label>
+              </Children>
+            </WidgetGroup>
+          </Children>
+        </WidgetGroup>
+        <WidgetGroup>
+          <ObjectName>DeckRow</ObjectName>
+          <Layout>horizontal</Layout>
+          <SizePolicy>me,e</SizePolicy>
+          <Children>
+            <Template src="skin:deck.xml">
+              <SetVariable name="group">[Channel1]</SetVariable>
+              <SetVariable name="deck">A</SetVariable>
+            </Template>
+            <Label>
+              <ObjectName>MixerPlaceholder</ObjectName>
+              <Text>Mixer</Text>
+              <Alignment>center</Alignment>
+              <Size>320f,me</Size>
+            </Label>
+            <Template src="skin:deck.xml">
+              <SetVariable name="group">[Channel2]</SetVariable>
+              <SetVariable name="deck">B</SetVariable>
+            </Template>
+          </Children>
+        </WidgetGroup>
+      </Children>
+    </WidgetGroup>
+    <!-- No visibility connection or collapsing wrapper: the library stays shown. -->
+    <Splitter>
+      <ObjectName>LibraryArea</ObjectName>
+      <Orientation>horizontal</Orientation>
+      <MinimumSize>,220</MinimumSize>
+      <SizePolicy>me,e</SizePolicy>
+      <SplitSizes>300,1800</SplitSizes>
+      <Collapsible>0,0</Collapsible>
+      <Children>
+        <WidgetGroup>
+          <ObjectName>LibrarySidebarArea</ObjectName>
+          <Layout>vertical</Layout>
+          <MinimumSize>180,220</MinimumSize>
+          <SizePolicy>me,me</SizePolicy>
+          <Children>
+            <SearchBox>
+              <MinimumSize>,28</MinimumSize>
+              <SizePolicy>me,f</SizePolicy>
+            </SearchBox>
+            <LibrarySidebar>
+              <SizePolicy>me,me</SizePolicy>
+            </LibrarySidebar>
+          </Children>
+        </WidgetGroup>
+        <Library>
+          <MinimumSize>500,220</MinimumSize>
+          <SizePolicy>me,me</SizePolicy>
+        </Library>
+      </Children>
+    </Splitter>
   </Children>
 </skin>
