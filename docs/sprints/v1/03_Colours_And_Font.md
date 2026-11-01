@@ -1,6 +1,6 @@
 # 03 · Colours and font
 
-**Status:** Implemented — awaiting owner verification
+**Status:** Done
 **Branch:** `v1-03`
 **Target:** all `target_images/traktor_*.png`
 
@@ -36,7 +36,7 @@ colours (sprint 12).
 - [x] Skin variables for colours the XML needs
 - [x] Find the fonts bundled with Mixxx 2.5, pick one and set base sizes
 - [x] Apply to the skeleton
-- [ ] `mixxx.log` clean
+- [x] `mixxx.log` clean
 
 ## Acceptance criteria
 
@@ -83,3 +83,9 @@ colours (sprint 12).
   still unchecked; check the owner's log after Reload Skin. The last attempt's
   log is saved locally at `logs/v1-03-load.log` (git-ignored). The isolated
   verification instance was stopped afterwards.
+- **Owner check (2026-11-01):** after `install.sh` and reloading the skin, the
+  owner approved the colour scheme: backgrounds and dividers match the dark
+  Traktor tone, and placeholder text is readable. The owner's `mixxx.log` shows
+  `Loaded skin "Traktorixx"` at 17:10:36 with no skin warnings. The only other
+  warnings, an `image/png` MIME message and a controller `slotApply`, are
+  unrelated to the skin.
