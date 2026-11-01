@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template>
+  <!-- Native track group accepts library drops while the deck is a skeleton. -->
+  <TrackWidgetGroup>
+    <ObjectName>DeckPlaceholder</ObjectName>
+    <Group><Variable name="group"/></Group>
+    <Layout>vertical</Layout>
+    <MinimumSize>320,336</MinimumSize>
+    <SizePolicy>me,me</SizePolicy>
+    <Children>
+      <Label>
+        <ObjectName>InfoPlaceholder</ObjectName>
+        <Text>Deck <Variable name="deck"/> — info / sync / pitch</Text>
+        <Alignment>center</Alignment>
+        <MinimumSize>,80</MinimumSize>
+        <MaximumSize>,120</MaximumSize>
+        <SizePolicy>me,e</SizePolicy>
+      </Label>
+      <Label>
+        <ObjectName>WaveformPlaceholder</ObjectName>
+        <Text>Deck <Variable name="deck"/> — waveform</Text>
+        <Alignment>center</Alignment>
+        <MinimumSize>,120</MinimumSize>
+        <SizePolicy>me,e</SizePolicy>
+      </Label>
+      <Label>
+        <ObjectName>OverviewPlaceholder</ObjectName>
+        <Text>Overview</Text>
+        <Alignment>center</Alignment>
+        <MinimumSize>,40</MinimumSize>
+        <MaximumSize>,64</MaximumSize>
+        <SizePolicy>me,e</SizePolicy>
+      </Label>
+      <Label>
+        <ObjectName>TransportPlaceholder</ObjectName>
+        <Text>Transport / loop</Text>
+        <Alignment>center</Alignment>
+        <MinimumSize>,48</MinimumSize>
+        <MaximumSize>,72</MaximumSize>
+        <SizePolicy>me,e</SizePolicy>
+      </Label>
+      <Label>
+        <ObjectName>BeatgridPlaceholder</ObjectName>
+        <Text>Beatgrid panel</Text>
+        <Alignment>center</Alignment>
+        <MinimumSize>,48</MinimumSize>
+        <MaximumSize>,72</MaximumSize>
+        <SizePolicy>me,e</SizePolicy>
+      </Label>
+    </Children>
+  </TrackWidgetGroup>
+</Template>
