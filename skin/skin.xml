@@ -28,12 +28,12 @@
     <SetVariable name="colourWarning">#e3423f</SetVariable>
     <SetVariable name="colourDeckA"><Variable name="colourAccentOrange"/></SetVariable>
     <SetVariable name="colourDeckB"><Variable name="colourTextSecondary"/></SetVariable>
-    <!-- The upper area grows to 740 px; the library takes the remaining height.
+    <!-- The upper area grows to 600 px; the library takes the remaining height.
          The same 320 px centre column aligns the master panel and mixer. -->
     <WidgetGroup>
       <ObjectName>PerformanceArea</ObjectName>
       <Layout>vertical</Layout>
-      <MaximumSize>,740</MaximumSize>
+      <MaximumSize>,600</MaximumSize>
       <SizePolicy>me,e</SizePolicy>
       <Children>
         <Label>
@@ -45,7 +45,7 @@
         <WidgetGroup>
           <ObjectName>FxRow</ObjectName>
           <Layout>horizontal</Layout>
-          <Size>me,112f</Size>
+          <Size>me,72f</Size>
           <Children>
             <WidgetGroup>
               <Layout>horizontal</Layout>
