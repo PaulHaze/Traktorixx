@@ -43,7 +43,7 @@ own work, not a fork.
   outside `skin/`.
 - **Project brief:** `project_info.md`.
 - **Paths:** every path in this file is relative to the repo root
-  (`/Users/paulhayes/code/AI/traktor_skin/custom_taktor_skin`). For example,
+  (`/Users/paulhayes/code/AI/traktor_skin/traktorixx`). For example,
   `docs/sprints/v1/` is `<repo>/docs/sprints/v1/`. The RAW reference skin sits
   outside the repo at `../Traktmixxx-RAW/`.
 
@@ -78,11 +78,30 @@ Check these before guessing. Use the 2.5 versions where they exist.
 
 ## Dev loop
 
-- `~/Library/Containers/org.mixxx.mixxx/Data/Library/Application Support/Mixxx/skins/Traktorixx`
-  is a symlink to this repo's `skin/` folder. Not yet verified: if the macOS sandbox
-  stops Mixxx loading the linked skin, replace the link with a copy script.
-- Start Mixxx with `--developer` and use the menu's reload-skin option to see
-  changes without restarting.
+- **Install by copy.** Verified on Mixxx 2.5.6: the macOS App Sandbox cannot read
+  `skin.xml` through a symlink to this checkout. The rest of this section (skin
+  selection, Reload Skin, visible QSS change) is not yet verified in the running app.
+  Use the copy installer from the repo root:
+
+  ```sh
+  ./scripts/install.sh
+  ```
+
+  It installs into
+  `~/Library/Containers/org.mixxx.mixxx/Data/Library/Application Support/Mixxx/skins/Traktorixx`
+  and replaces the earlier symlink if present. Run it after every skin edit.
+- Launch the installed app in developer mode (quit any existing Mixxx first):
+
+  ```sh
+  "/Applications/-- Audio --/Mixxx.app/Contents/MacOS/Mixxx" --developer
+  ```
+
+- Select **Traktorixx** in **Mixxx → Preferences → Interface → Skin**, then Apply.
+  Reload from **Developer → Reload Skin** after running the installer. The
+  `--developer` flag is confirmed by the installed app's `--help`; the menu path
+  is confirmed by the [Mixxx 2.5 menu implementation](https://github.com/mixxxdj/mixxx/blob/2.5/src/widget/wmainmenubar.cpp).
+- Check `mixxx.log` in the settings directory above after each reload. GUI selection
+  and a visible QSS change on reload need the owner's check.
 
 ## Licence
 
