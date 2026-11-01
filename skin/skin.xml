@@ -36,19 +36,19 @@
           <Children>
             <WidgetGroup>
               <Layout>horizontal</Layout>
-              <SizePolicy>i,me</SizePolicy>
+              <SizePolicy>me,me</SizePolicy>
               <Children>
                 <Label>
                   <ObjectName>FxPlaceholder</ObjectName>
                   <Text>FX unit 1</Text>
                   <Alignment>center</Alignment>
-                  <SizePolicy>i,me</SizePolicy>
+                  <SizePolicy>me,me</SizePolicy>
                 </Label>
                 <Label>
                   <ObjectName>ReservedFxPlaceholder</ObjectName>
                   <Text>Reserved FX</Text>
                   <Alignment>center</Alignment>
-                  <SizePolicy>i,me</SizePolicy>
+                  <SizePolicy>me,me</SizePolicy>
                 </Label>
               </Children>
             </WidgetGroup>
@@ -60,19 +60,19 @@
             </Label>
             <WidgetGroup>
               <Layout>horizontal</Layout>
-              <SizePolicy>i,me</SizePolicy>
+              <SizePolicy>me,me</SizePolicy>
               <Children>
                 <Label>
                   <ObjectName>ReservedFxPlaceholder</ObjectName>
                   <Text>Reserved FX</Text>
                   <Alignment>center</Alignment>
-                  <SizePolicy>i,me</SizePolicy>
+                  <SizePolicy>me,me</SizePolicy>
                 </Label>
                 <Label>
                   <ObjectName>FxPlaceholder</ObjectName>
                   <Text>FX unit 2</Text>
                   <Alignment>center</Alignment>
-                  <SizePolicy>i,me</SizePolicy>
+                  <SizePolicy>me,me</SizePolicy>
                 </Label>
               </Children>
             </WidgetGroup>

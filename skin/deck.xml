@@ -6,7 +6,7 @@
     <Group><Variable name="group"/></Group>
     <Layout>vertical</Layout>
     <MinimumSize>320,336</MinimumSize>
-    <SizePolicy>i,me</SizePolicy>
+    <SizePolicy>me,me</SizePolicy>
     <Children>
       <Label>
         <ObjectName>InfoPlaceholder</ObjectName>
@@ -14,14 +14,14 @@
         <Alignment>center</Alignment>
         <MinimumSize>,80</MinimumSize>
         <MaximumSize>,120</MaximumSize>
-        <SizePolicy>i,e</SizePolicy>
+        <SizePolicy>me,e</SizePolicy>
       </Label>
       <Label>
         <ObjectName>WaveformPlaceholder</ObjectName>
         <Text>Deck <Variable name="deck"/> — waveform</Text>
         <Alignment>center</Alignment>
         <MinimumSize>,120</MinimumSize>
-        <SizePolicy>i,e</SizePolicy>
+        <SizePolicy>me,e</SizePolicy>
       </Label>
       <Label>
         <ObjectName>OverviewPlaceholder</ObjectName>
@@ -29,7 +29,7 @@
         <Alignment>center</Alignment>
         <MinimumSize>,40</MinimumSize>
         <MaximumSize>,64</MaximumSize>
-        <SizePolicy>i,e</SizePolicy>
+        <SizePolicy>me,e</SizePolicy>
       </Label>
       <Label>
         <ObjectName>TransportPlaceholder</ObjectName>
@@ -37,7 +37,7 @@
         <Alignment>center</Alignment>
         <MinimumSize>,48</MinimumSize>
         <MaximumSize>,72</MaximumSize>
-        <SizePolicy>i,e</SizePolicy>
+        <SizePolicy>me,e</SizePolicy>
       </Label>
       <Label>
         <ObjectName>BeatgridPlaceholder</ObjectName>
@@ -45,7 +45,7 @@
         <Alignment>center</Alignment>
         <MinimumSize>,48</MinimumSize>
         <MaximumSize>,72</MaximumSize>
-        <SizePolicy>i,e</SizePolicy>
+        <SizePolicy>me,e</SizePolicy>
       </Label>
     </Children>
   </TrackWidgetGroup>

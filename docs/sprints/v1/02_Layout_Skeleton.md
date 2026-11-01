@@ -1,6 +1,6 @@
 # 02 · Layout skeleton
 
-**Status:** Implemented; awaiting owner verification in Mixxx
+**Status:** Done
 **Branch:** `v1-02`
 **Target:** `target_images/traktor_full_with_library.png`
 
@@ -42,8 +42,8 @@ Colours beyond simple placeholder tints, real controls, the waveform.
 - [x] FX row halves, with reserved space
 - [x] Mixer placeholder between the decks
 - [x] Real library widget, always visible
-- [ ] Check resizing from 2560×1600 down to the minimum
-- [x] `mixxx.log` clean (isolated native launch; owner reload check pending)
+- [x] Check resizing from 2560×1600 down to the minimum
+- [x] `mixxx.log` clean
 
 ## Acceptance criteria
 
@@ -80,7 +80,22 @@ Colours beyond simple placeholder tints, real controls, the waveform.
   settings directory's sampler bank and audio timestamps. Offscreen/safe-mode
   attempts exited before loading the skin; the successful run used normal
   rendering with separate settings and an empty library.
-- **Owner check required:** compare with the target at 2560×1600, resize down to
+- **Fix after owner check (2026-11-01):** in Mixxx, the FX sides and both decks
+  were empty. Only the header, master, mixer and library showed. Cause:
+  `WWidgetGroup::setup` gives every group layout `Qt::AlignCenter`. A layout
+  aligned like that fills the width only if a child expands horizontally.
+  Otherwise it shrinks to its preferred width. Horizontal `Ignored` (`i`) never
+  expands and has a preferred width of 0, so those areas collapsed to nothing.
+  All `i` horizontal policies are now `me`. **Rule: don't use `i` in a skin
+  `SizePolicy`; use `me`/`e` for areas that share width.**
+- **Owner check (2026-11-01), after the fix:** all areas show in the right
+  places compared with the target. Library drag-and-drop works on both decks:
+  the drop is accepted, and the loaded track plays with the keyboard (`D` / `L`).
+  No skin warnings in `mixxx.log` after reloading. The centre column (fixed
+  320 px) is wider than the target's share at small window sizes. Tune it when
+  the real mixer goes in. The owner then checked resizing down to the minimum (configured
+  minimum 1024×720) and the 2560×1600 proportions: both fine.
+- **Original owner check list:** compare with the target at 2560×1600, resize down to
   the minimum, search/browse and load a track on A/B, then inspect `mixxx.log`
   after reloading. Automated GUI interaction was unavailable because macOS
   denied assistive access to `osascript`.
