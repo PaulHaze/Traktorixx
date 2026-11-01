@@ -1,6 +1,6 @@
 # 04 · Waveforms (top priority)
 
-**Status:** Not started
+**Status:** Implementation complete; awaiting Mixxx visual verification
 **Branch:** `v1-04`
 **Target:** `target_images/traktor_dj_deck.png`, `traktor_full_with_library.png`
 
@@ -32,10 +32,11 @@ Track info, the transport/loop rows, the beatgrid panel.
 
 ## Tasks
 
-- [ ] Read the skin guide and parser source for the waveform and overview widget options
-- [ ] Scrolling waveform per deck, playhead position, markers
-- [ ] Overview per deck, with hotcue numbers and the back-to-start button
-- [ ] Spectral colours, then compare waveform types in Preferences
+- [x] Read the skin guide and parser source for the waveform and overview widget options
+- [x] Scrolling waveform per deck, playhead position, markers
+- [x] Overview per deck, with hotcue numbers and the back-to-start button
+- [x] Configure spectral waveform colours
+- [ ] Compare waveform types in Preferences and record the closest match
 - [ ] Check click/drag behaviour on both
 - [ ] `mixxx.log` clean
 
@@ -49,3 +50,16 @@ Track info, the transport/loop rows, the beatgrid panel.
 - Every Traktor waveform feature Mixxx can't match is listed in Findings.
 
 ## Findings
+
+- The skin configures red low, green mid, and blue high signal colours. The RGB
+  signal colours are set to the same palette for Mixxx's RGB waveform renderer.
+  Compare the available waveform types in Preferences on the installed Mixxx 2.5.6
+  app before recording a recommendation; this requires loading a track and visual
+  inspection.
+- The documented `<Visual>` options expose a play-position colour but no setting
+  for moving the fixed scrolling-waveform playhead left of centre. The playhead is
+  therefore left at Mixxx's standard position pending visual confirmation.
+- Mixxx's overview widget provides click-to-seek and drag preview/seek behavior.
+  Verify both interactions in the running app.
+- `Mixxx → Developer → Reload Skin`, comparison against the target images, and the
+  `mixxx.log` check require the owner's running Mixxx session and remain pending.

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Template>
-  <!-- Native track group accepts library drops while the deck is a skeleton. -->
+  <!-- Native track group accepts library drops and keeps each deck's controls
+       bound to its channel group. -->
   <TrackWidgetGroup>
     <ObjectName>DeckPlaceholder</ObjectName>
     <Group><Variable name="group"/></Group>
@@ -16,21 +17,91 @@
         <MaximumSize>,120</MaximumSize>
         <SizePolicy>me,e</SizePolicy>
       </Label>
-      <Label>
-        <ObjectName>WaveformPlaceholder</ObjectName>
-        <Text>Deck <Variable name="deck"/> — waveform</Text>
-        <Alignment>center</Alignment>
-        <MinimumSize>,120</MinimumSize>
-        <SizePolicy>me,e</SizePolicy>
-      </Label>
-      <Label>
-        <ObjectName>OverviewPlaceholder</ObjectName>
-        <Text>Overview</Text>
-        <Alignment>center</Alignment>
-        <MinimumSize>,40</MinimumSize>
-        <MaximumSize>,64</MaximumSize>
-        <SizePolicy>me,e</SizePolicy>
-      </Label>
+      <Visual>
+        <ObjectName>DeckWaveform</ObjectName>
+        <TooltipId>waveform_display</TooltipId>
+        <Channel><Variable name="channel"/></Channel>
+        <MinimumSize>,180</MinimumSize>
+        <SizePolicy>me,me</SizePolicy>
+        <BgColor><Variable name="colourWindow"/></BgColor>
+        <SignalLowColor>#f04b3a</SignalLowColor>
+        <SignalMidColor>#54c45e</SignalMidColor>
+        <SignalHighColor>#4387f5</SignalHighColor>
+        <SignalRGBLowColor>#f04b3a</SignalRGBLowColor>
+        <SignalRGBMidColor>#54c45e</SignalRGBMidColor>
+        <SignalRGBHighColor>#4387f5</SignalRGBHighColor>
+        <BeatColor>#666666</BeatColor>
+        <AxesColor>#444444</AxesColor>
+        <PlayPosColor><Variable name="colourWarning"/></PlayPosColor>
+        <DefaultMark>
+          <Align>center|top</Align>
+          <Color><Variable name="colourActive"/></Color>
+          <TextColor><Variable name="colourTextPrimary"/></TextColor>
+          <Text>%1</Text>
+        </DefaultMark>
+        <Mark>
+          <Control>cue_point</Control>
+          <Align>center|top</Align>
+          <Color><Variable name="colourAccentOrange"/></Color>
+          <TextColor><Variable name="colourTextPrimary"/></TextColor>
+          <Text>CUE</Text>
+        </Mark>
+      </Visual>
+      <WidgetGroup>
+        <ObjectName>DeckOverviewRow</ObjectName>
+        <Layout>horizontal</Layout>
+        <MinimumSize>,48</MinimumSize>
+        <MaximumSize>,56</MaximumSize>
+        <SizePolicy>me,f</SizePolicy>
+        <Children>
+          <PushButton>
+            <ObjectName>BackToStart</ObjectName>
+            <Size>48,me</Size>
+            <NumberStates>1</NumberStates>
+            <State>
+              <Number>0</Number>
+              <Text>↤</Text>
+            </State>
+            <Connection>
+              <ConfigKey><Variable name="group"/>,start_stop</ConfigKey>
+            </Connection>
+          </PushButton>
+          <Overview>
+            <ObjectName>DeckOverview</ObjectName>
+            <TooltipId>waveform_overview</TooltipId>
+            <Channel><Variable name="channel"/></Channel>
+            <SizePolicy>me,me</SizePolicy>
+            <BgColor><Variable name="colourWindow"/></BgColor>
+            <SignalLowColor>#f04b3a</SignalLowColor>
+            <SignalHighColor>#4387f5</SignalHighColor>
+            <PlayPosColor><Variable name="colourWarning"/></PlayPosColor>
+            <PlayedOverlayColor>#333333</PlayedOverlayColor>
+            <DefaultMark>
+              <Align>center|top</Align>
+              <Color><Variable name="colourActive"/></Color>
+              <TextColor><Variable name="colourTextPrimary"/></TextColor>
+              <Text>%1</Text>
+            </DefaultMark>
+            <Mark>
+              <Control>cue_point</Control>
+              <Align>center|top</Align>
+              <Color><Variable name="colourAccentOrange"/></Color>
+              <TextColor><Variable name="colourTextPrimary"/></TextColor>
+              <Text>CUE</Text>
+            </Mark>
+            <Connection>
+              <ConfigKey><Variable name="group"/>,playposition</ConfigKey>
+              <EmitOnDownPress>false</EmitOnDownPress>
+            </Connection>
+          </Overview>
+          <Label>
+            <ObjectName>OverviewKeySpace</ObjectName>
+            <Text>KEY</Text>
+            <Alignment>center</Alignment>
+            <Size>64,me</Size>
+          </Label>
+        </Children>
+      </WidgetGroup>
       <Label>
         <ObjectName>TransportPlaceholder</ObjectName>
         <Text>Transport / loop</Text>
