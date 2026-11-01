@@ -10,6 +10,9 @@ Someone has already begun something similar and there are 2 similar repos I foun
 The code for this repo will be stored in 
 /custom_taktor_skin
 
+Some reference images of what verious Traktor elements look like can be found here:
+/custom_taktor_skin/target_images/
+
 Initially I want to copy over the most accurate or recent ui repo from the ones above. From there I want to modify in targeted adjustments to eventually get the look I want. 
 
 Next steps:
