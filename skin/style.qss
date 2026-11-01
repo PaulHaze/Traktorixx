@@ -1,30 +1,63 @@
-/* Temporary block tints. Sprint 03 defines the palette and font. */
-WWidgetGroup#Traktorixx {
-    background-color: #202124;
+/* Traktorixx palette — sampled from target_images/, principally
+   traktor_full_with_library.png, with the deck/FX/transport detail shots.
+   QSS has no variables: reuse these exact values. XML names live in skin.xml.
+
+   colourWindow        #181818  header, deck, waveform, mixer and FX background
+   colourPanel         #262626  transport / beatgrid panels
+   colourDivider       #000000  panel boundaries
+   colourButton        #323232  button face / recessed value field
+   colourActive        #448bf6  active Traktor blue
+   colourTextPrimary   #c0c0c0  readable titles and values
+   colourTextSecondary #a0a0a0  labels / inactive deck B letter
+   colourAccentOrange  #fa7242  deck A letter / FX unit number
+   colourWarning       #e3423f  playhead / warning red
+
+   Deck A aliases orange; deck B aliases secondary text (no extra colours).
+
+   Font: Open Sans. Mixxx 2.5.6 bundles OpenSans-Regular.ttf,
+   OpenSans-Semibold.ttf and OpenSans-Bold.ttf, plus Ubuntu-R.ttf / Ubuntu-B.ttf
+   in Contents/Resources/fonts on macOS (resource fonts on Linux).
+   Open Sans has clear small letterforms on dark panels; no OS font install.
+   Sizes: labels/base 14px; values 16px; track titles 18px (semibold).
+   Future value/title widgets use ObjectName Value / TrackTitle respectively.
+   Scope typography to the performance area; library styling is sprint 12.
+*/
+WWidgetGroup#Traktorixx, WWidgetGroup#PerformanceArea {
+    background-color: #181818;
 }
+WWidgetGroup#PerformanceArea, WWidgetGroup#PerformanceArea * {
+    font-family: "Open Sans";
+    font-size: 14px;
+    color: #c0c0c0;
+}
+WWidgetGroup#PerformanceArea WLabel#Value,
+WWidgetGroup#PerformanceArea WLabel#Value * {
+    font-size: 16px;
+}
+WWidgetGroup#PerformanceArea WLabel#TrackTitle,
+WWidgetGroup#PerformanceArea WLabel#TrackTitle * {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Placeholder zones follow the reference's neutral panels, rather than tints. */
 WLabel#HeaderPlaceholder, WLabel#ReservedFxPlaceholder,
 WLabel#FxPlaceholder, WLabel#MasterPlaceholder, WLabel#MixerPlaceholder,
 WLabel#InfoPlaceholder, WLabel#WaveformPlaceholder,
 WLabel#OverviewPlaceholder, WLabel#TransportPlaceholder, WLabel#BeatgridPlaceholder {
-    color: #eeeeee;
-    border: 1px solid #101114;
+    background-color: #181818;
+    border: 1px solid #000000;
 }
-WLabel#HeaderPlaceholder, WLabel#ReservedFxPlaceholder {
-    background-color: #24262a;
+WLabel#TransportPlaceholder, WLabel#BeatgridPlaceholder {
+    background-color: #262626;
 }
-WLabel#FxPlaceholder, WLabel#MasterPlaceholder, WLabel#MixerPlaceholder {
-    background-color: #35383d;
-}
-WLabel#InfoPlaceholder, WLabel#TransportPlaceholder {
-    background-color: #30343a;
-}
-WLabel#WaveformPlaceholder {
-    background-color: #1b222a;
-}
-WLabel#OverviewPlaceholder, WLabel#BeatgridPlaceholder {
-    background-color: #292f35;
+WWidgetGroup#PerformanceArea WLabel#ReservedFxPlaceholder,
+WWidgetGroup#PerformanceArea WLabel#ReservedFxPlaceholder *,
+WWidgetGroup#PerformanceArea WLabel#BeatgridPlaceholder,
+WWidgetGroup#PerformanceArea WLabel#BeatgridPlaceholder * {
+    color: #a0a0a0;
 }
 QSplitter#LibraryArea::handle {
-    background-color: #101114;
+    background-color: #000000;
     width: 2px;
 }
