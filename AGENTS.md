@@ -204,10 +204,11 @@ No GitHub Issues. Work is tracked as numbered sprint files in
 - Implementation agent: `gpt-6.1-sol` at medium reasoning effort.
 - `$start-task` must not create, switch, rename, merge or delete branches. The owner
   manages them, except through `/new-task`.
-- `$start-task` implements the matching sprint and creates its focused task
-  commit; it does not run an Astra audit. The owner runs a separate audit with
-  another agent after implementation. Keep the `$audit-commit` context below for
-  that separate audit workflow.
+- **This repository overrides any generic `$start-task` instruction to run an
+  audit.** `$start-task` implements the matching sprint, updates its status, and
+  creates its focused task commit, then stops. It must not run or delegate an
+  Astra audit at the end. Run an audit only as a separate, explicitly requested
+  workflow using the `$audit-commit` context below.
 
 ### `$audit-commit` context (Codex / Astra)
 

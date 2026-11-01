@@ -15,6 +15,19 @@
   <SizePolicy>me,me</SizePolicy>
   <Style src="skin:style.qss"/>
   <Children>
+    <!-- Shared XML palette; names/hex values match the palette in style.qss.
+         Available to every template for native widget colour tags. -->
+    <SetVariable name="colourWindow">#181818</SetVariable>
+    <SetVariable name="colourPanel">#262626</SetVariable>
+    <SetVariable name="colourDivider">#000000</SetVariable>
+    <SetVariable name="colourButton">#323232</SetVariable>
+    <SetVariable name="colourActive">#448bf6</SetVariable>
+    <SetVariable name="colourTextPrimary">#c0c0c0</SetVariable>
+    <SetVariable name="colourTextSecondary">#a0a0a0</SetVariable>
+    <SetVariable name="colourAccentOrange">#fa7242</SetVariable>
+    <SetVariable name="colourWarning">#e3423f</SetVariable>
+    <SetVariable name="colourDeckA"><Variable name="colourAccentOrange"/></SetVariable>
+    <SetVariable name="colourDeckB"><Variable name="colourTextSecondary"/></SetVariable>
     <!-- The upper area grows to 740 px; the library takes the remaining height.
          The same 320 px centre column aligns the master panel and mixer. -->
     <WidgetGroup>
