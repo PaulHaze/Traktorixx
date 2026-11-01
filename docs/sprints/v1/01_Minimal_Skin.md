@@ -1,6 +1,6 @@
 # 01 · Minimal skin that loads
 
-**Status:** Not started
+**Status:** Implemented; awaiting owner GUI verification
 **Branch:** `v1-01`
 
 ## Goal
@@ -29,12 +29,13 @@ Any real layout, decks or styling.
 
 ## Tasks
 
-- [ ] Write `skin/skin.xml` (manifest + minimal layout)
-- [ ] Write `skin/style.qss`
-- [ ] Preview image (if needed)
-- [ ] Create the symlink. Check that Mixxx lists and loads it. If it doesn't, use the copy-script fallback
+- [x] Write `skin/skin.xml` (manifest + minimal layout)
+- [x] Write `skin/style.qss`
+- [x] Preview image (if needed)
+- [x] Test the symlink and install the copy-script fallback after the sandbox blocks it
+- [ ] Check that Mixxx lists and loads the installed copy
 - [ ] Confirm reload-skin works in `--developer` mode
-- [ ] Update `AGENTS.md` → Dev loop with the verified steps
+- [x] Update `AGENTS.md` → Dev loop with the verified steps
 - [ ] `mixxx.log` shows no skin errors or warnings
 
 ## Acceptance criteria
@@ -46,4 +47,28 @@ Any real layout, decks or styling.
 
 ## Findings
 
-_(Sandbox behaviour, preview filename, anything surprising.)_
+- Mixxx 2.5.6 is installed at `/Applications/-- Audio --/Mixxx.app`.
+- The macOS App Sandbox blocks the symlink to this checkout. An isolated
+  `--developer --settings-path` run inside the Mixxx container logged
+  `LegacySkinParser::openSkin - can't open file` for the linked `skin.xml`.
+  `scripts/install.sh` now installs a copy in the requested user-skins path;
+  running it replaces the old symlink. Repeat it before each reload.
+- The root `<skin>` is itself the window's `WWidgetGroup` when it has a
+  `<Layout>`; no separate `<Window>` tag is needed. Styles use `skin:style.qss`
+  so they resolve independently of the launch directory.
+- Mixxx 2.5 reads `skin_preview.png` and falls back to its own placeholder if
+  absent. Added our own dark placeholder. Source:
+  [LegacySkin::preview](https://github.com/mixxxdj/mixxx/blob/2.5/src/skin/legacy/legacyskin.cpp).
+- The installed app's `--help` confirms `--developer`. The Developer menu was
+  observed after launch; **Developer → Reload Skin** is confirmed in the
+  [2.5 menu source](https://github.com/mixxxdj/mixxx/blob/2.5/src/widget/wmainmenubar.cpp)
+  and [skin guide](https://github.com/mixxxdj/mixxx/wiki/Creating-Skins).
+- Static verification passed: `xmllint --noout skin/skin.xml`, shell syntax
+  checking, and installer execution. The installed files match `skin/`.
+- **Still unverified:** selecting the copied skin in Preferences, its rendered
+  placeholder, QSS changes on reload, and a clean skin-load/reload log. macOS
+  denied this agent assistive access, and screen captures exposed only the
+  desktop/menu bar. Isolated startup runs did not reach layout parsing without
+  interacting with startup dialogs, so absence of skin warnings is not proof of
+  a successful load. Unrelated locale and installed Audio Unit warnings appeared
+  during startup. The existing Mixxx session and preferences were left intact.

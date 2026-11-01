@@ -1,0 +1,5 @@
+/* Minimal development skin; the palette is defined in sprint 03. */
+WWidgetGroup#Traktorixx, WLabel {
+    background-color: #202124;
+    color: #eeeeee;
+}

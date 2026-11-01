@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE skin>
+<skin>
+  <manifest>
+    <title>Traktorixx</title>
+    <author>Paul Hayes</author>
+    <version>0.1</version>
+    <description>An original two-deck skin, starting with a minimal placeholder.</description>
+    <license>CC BY-NC 4.0</license>
+  </manifest>
+
+  <ObjectName>Traktorixx</ObjectName>
+  <Layout>vertical</Layout>
+  <Size>960,600</Size>
+  <MinimumSize>640,360</MinimumSize>
+  <SizePolicy>me,me</SizePolicy>
+  <Style src="skin:style.qss"/>
+  <Children>
+    <Label>
+      <Text>Traktorixx — minimal skin</Text>
+      <Alignment>center</Alignment>
+      <SizePolicy>me,me</SizePolicy>
+    </Label>
+  </Children>
+</skin>
