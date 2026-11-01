@@ -43,7 +43,7 @@ own work, not a fork.
   outside `skin/`.
 - **Project brief:** `project_info.md`.
 - **Paths:** every path in this file is relative to the repo root
-  (`/Users/paulhayes/code/AI/traktor_skin/custom_taktor_skin`). For example,
+  (`/Users/paulhayes/code/AI/traktor_skin/traktorixx`). For example,
   `docs/sprints/v1/` is `<repo>/docs/sprints/v1/`. The RAW reference skin sits
   outside the repo at `../Traktmixxx-RAW/`.
 
@@ -78,8 +78,10 @@ Check these before guessing. Use the 2.5 versions where they exist.
 
 ## Dev loop
 
-- **Verified on Mixxx 2.5.6:** the macOS App Sandbox cannot read `skin.xml`
-  through a symlink to this checkout. Use the copy installer from the repo root:
+- **Install by copy.** Verified on Mixxx 2.5.6: the macOS App Sandbox cannot read
+  `skin.xml` through a symlink to this checkout. The rest of this section (skin
+  selection, Reload Skin, visible QSS change) is not yet verified in the running app.
+  Use the copy installer from the repo root:
 
   ```sh
   ./scripts/install.sh
@@ -99,8 +101,7 @@ Check these before guessing. Use the 2.5 versions where they exist.
   `--developer` flag is confirmed by the installed app's `--help`; the menu path
   is confirmed by the [Mixxx 2.5 menu implementation](https://github.com/mixxxdj/mixxx/blob/2.5/src/widget/wmainmenubar.cpp).
 - Check `mixxx.log` in the settings directory above after each reload. GUI selection
-  and a visible QSS change on reload still need the owner's check: this agent's
-  macOS Accessibility/Screen Recording access does not allow those checks.
+  and a visible QSS change on reload need the owner's check.
 
 ## Licence
 

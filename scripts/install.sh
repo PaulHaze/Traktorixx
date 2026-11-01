@@ -11,5 +11,5 @@ if [ -L "$destination" ]; then
     rm "$destination"
 fi
 mkdir -p "$destination"
-cp -R "$repo_dir/skin/." "$destination/"
+rsync -a --delete --exclude '.DS_Store' "$repo_dir/skin/" "$destination/"
 printf 'Installed Traktorixx in %s\n' "$destination"

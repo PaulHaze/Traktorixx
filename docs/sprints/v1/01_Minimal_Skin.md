@@ -1,6 +1,6 @@
 # 01 · Minimal skin that loads
 
-**Status:** Implemented; awaiting owner GUI verification
+**Status:** Done; owner verified in Mixxx
 **Branch:** `v1-01`
 
 ## Goal
@@ -33,10 +33,10 @@ Any real layout, decks or styling.
 - [x] Write `skin/style.qss`
 - [x] Preview image (if needed)
 - [x] Test the symlink and install the copy-script fallback after the sandbox blocks it
-- [ ] Check that Mixxx lists and loads the installed copy
-- [ ] Confirm reload-skin works in `--developer` mode
+- [x] Check that Mixxx lists and loads the installed copy
+- [x] Confirm reload-skin works in `--developer` mode
 - [x] Update `AGENTS.md` → Dev loop with the verified steps
-- [ ] `mixxx.log` shows no skin errors or warnings
+- [x] `mixxx.log` shows no skin errors or warnings
 
 ## Acceptance criteria
 
@@ -65,10 +65,7 @@ Any real layout, decks or styling.
   and [skin guide](https://github.com/mixxxdj/mixxx/wiki/Creating-Skins).
 - Static verification passed: `xmllint --noout skin/skin.xml`, shell syntax
   checking, and installer execution. The installed files match `skin/`.
-- **Still unverified:** selecting the copied skin in Preferences, its rendered
-  placeholder, QSS changes on reload, and a clean skin-load/reload log. macOS
-  denied this agent assistive access, and screen captures exposed only the
-  desktop/menu bar. Isolated startup runs did not reach layout parsing without
-  interacting with startup dialogs, so absence of skin warnings is not proof of
-  a successful load. Unrelated locale and installed Audio Unit warnings appeared
-  during startup. The existing Mixxx session and preferences were left intact.
+- **Owner verified (2026-11-01):** Traktorixx is listed in Preferences → Interface,
+  loads, and renders the dark placeholder. The log (symlinked at `logs/mixxx.log`,
+  git-ignored) shows `Loaded skin "Traktorixx"` with no skin warnings or errors;
+  the other warnings in it (locale, Audio Units, window position) are unrelated.

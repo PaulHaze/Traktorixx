@@ -17,6 +17,7 @@
   <Style src="skin:style.qss"/>
   <Children>
     <Label>
+      <ObjectName>PlaceholderLabel</ObjectName>
       <Text>Traktorixx — minimal skin</Text>
       <Alignment>center</Alignment>
       <SizePolicy>me,me</SizePolicy>

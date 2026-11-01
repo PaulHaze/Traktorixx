@@ -33,7 +33,7 @@ holds the names of things. `AGENTS.md` holds the conventions and reference docs.
 
 | # | File | Builds |
 |---|---|---|
-| 01 | `01_Minimal_Skin.md` | A minimal skin that loads, plus the symlink dev loop |
+| 01 | `01_Minimal_Skin.md` | A minimal skin that loads, plus the copy-install dev loop |
 | 02 | `02_Layout_Skeleton.md` | Header / FX row / decks + mixer / library areas |
 | 03 | `03_Colours_And_Font.md` | Colour palette, font, base QSS |
 | 04 | `04_Waveforms.md` | Scrolling waveform and overview per deck (top priority) |
