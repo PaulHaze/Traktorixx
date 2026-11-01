@@ -6,7 +6,7 @@
     <ObjectName>DeckPlaceholder</ObjectName>
     <Group><Variable name="group"/></Group>
     <Layout>vertical</Layout>
-    <MinimumSize>320,336</MinimumSize>
+    <MinimumSize>320,404</MinimumSize>
     <SizePolicy>me,me</SizePolicy>
     <Children>
       <Label>
@@ -24,24 +24,25 @@
         <MinimumSize>,180</MinimumSize>
         <SizePolicy>me,me</SizePolicy>
         <BgColor><Variable name="colourWindow"/></BgColor>
-        <SignalLowColor>#f04b3a</SignalLowColor>
-        <SignalMidColor>#54c45e</SignalMidColor>
-        <SignalHighColor>#4387f5</SignalHighColor>
-        <SignalRGBLowColor>#f04b3a</SignalRGBLowColor>
-        <SignalRGBMidColor>#54c45e</SignalRGBMidColor>
-        <SignalRGBHighColor>#4387f5</SignalRGBHighColor>
-        <BeatColor>#666666</BeatColor>
+        <SignalColor>#2fd3a0</SignalColor>
+        <SignalLowColor>#7b3fff</SignalLowColor>
+        <SignalMidColor>#2fd3a0</SignalMidColor>
+        <SignalHighColor>#ffd93d</SignalHighColor>
+        <SignalRGBLowColor>#7b3fff</SignalRGBLowColor>
+        <SignalRGBMidColor>#2fd3a0</SignalRGBMidColor>
+        <SignalRGBHighColor>#ffd93d</SignalRGBHighColor>
+        <BeatColor>#d9666666</BeatColor>
         <AxesColor>#444444</AxesColor>
         <PlayPosColor><Variable name="colourWarning"/></PlayPosColor>
         <DefaultMark>
-          <Align>center|top</Align>
+          <Align>hcenter|top</Align>
           <Color><Variable name="colourActive"/></Color>
           <TextColor><Variable name="colourTextPrimary"/></TextColor>
           <Text>%1</Text>
         </DefaultMark>
         <Mark>
           <Control>cue_point</Control>
-          <Align>center|top</Align>
+          <Align>hcenter|top</Align>
           <Color><Variable name="colourAccentOrange"/></Color>
           <TextColor><Variable name="colourTextPrimary"/></TextColor>
           <Text>CUE</Text>
@@ -56,7 +57,7 @@
         <Children>
           <PushButton>
             <ObjectName>BackToStart</ObjectName>
-            <Size>48,me</Size>
+            <Size>48f,me</Size>
             <NumberStates>1</NumberStates>
             <State>
               <Number>0</Number>
@@ -72,19 +73,24 @@
             <Channel><Variable name="channel"/></Channel>
             <SizePolicy>me,me</SizePolicy>
             <BgColor><Variable name="colourWindow"/></BgColor>
-            <SignalLowColor>#f04b3a</SignalLowColor>
-            <SignalHighColor>#4387f5</SignalHighColor>
+            <SignalColor>#2fd3a0</SignalColor>
+            <SignalLowColor>#7b3fff</SignalLowColor>
+            <SignalMidColor>#2fd3a0</SignalMidColor>
+            <SignalHighColor>#ffd93d</SignalHighColor>
+            <SignalRGBLowColor>#7b3fff</SignalRGBLowColor>
+            <SignalRGBMidColor>#2fd3a0</SignalRGBMidColor>
+            <SignalRGBHighColor>#ffd93d</SignalRGBHighColor>
             <PlayPosColor><Variable name="colourWarning"/></PlayPosColor>
-            <PlayedOverlayColor>#333333</PlayedOverlayColor>
+            <PlayedOverlayColor>#80000000</PlayedOverlayColor>
             <DefaultMark>
-              <Align>center|top</Align>
+              <Align>hcenter|top</Align>
               <Color><Variable name="colourActive"/></Color>
               <TextColor><Variable name="colourTextPrimary"/></TextColor>
               <Text>%1</Text>
             </DefaultMark>
             <Mark>
               <Control>cue_point</Control>
-              <Align>center|top</Align>
+              <Align>hcenter|top</Align>
               <Color><Variable name="colourAccentOrange"/></Color>
               <TextColor><Variable name="colourTextPrimary"/></TextColor>
               <Text>CUE</Text>
@@ -98,7 +104,7 @@
             <ObjectName>OverviewKeySpace</ObjectName>
             <Text>KEY</Text>
             <Alignment>center</Alignment>
-            <Size>64,me</Size>
+            <Size>64f,me</Size>
           </Label>
         </Children>
       </WidgetGroup>
