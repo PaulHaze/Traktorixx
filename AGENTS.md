@@ -5,23 +5,29 @@ Master reference for every agent working on this repo (Claude/Opus and Codex/Ast
 
 ## Project
 
-**Traktorixx** (working title; remote: `github.com/PaulHaze/Traktorixx`) is a custom skin for the DJ software [Mixxx](https://mixxx.org), running on the owner's Mac.
-The goal is to make Mixxx look and feel as close to Traktor as possible. The owner is
-moving from Traktor to Mixxx.
+**Traktorixx** (working title; remote: `github.com/PaulHaze/Traktorixx`) is a custom skin for the DJ software [Mixxx](https://mixxx.org).
+The goal is to make Mixxx look and feel like the owner's Traktor setup. The owner is
+moving from Traktor to Mixxx. The skin is **written from scratch**. It's the owner's
+own work, not a fork.
 
-- **Target Mixxx version:** 2.5.6 (macOS) only. No backwards compatibility with
-  2.3/2.4.
+- **Target Mixxx version:** 2.5.6 only. No backwards compatibility with 2.3/2.4.
+- **Platforms:** built and tested on the owner's Mac. The gig machine will be a
+  Lenovo laptop running Linux (2560×1600), ported and tweaked later. Keep the
+  skin free of anything macOS-only.
+- **Screen size:** design for a maximum window of **2560×1600**, and stay resizable
+  down to smaller windows.
 - **Target look:** `target_images/` holds Traktor screenshots of each part of the UI
   (deck, cue/loop/beatgrid rows, mixer, FX strip, master section). These are the
   reference for "done".
-- **Base skin (read-only reference):** `../Traktmixxx-RAW/`, a fork of RoundCorners
-  (via Traktmixxx) written for Mixxx 2.3. Never edit it. It stays alongside this repo
-  so you can compare against the original.
-- **Approach:** copy Traktmixxx-RAW into this repo once, get it loading cleanly on
-  2.5.6, then make small, targeted changes, one at a time, until it matches the
-  target images.
-- **Scope: 2 decks only (A/B).** Remove RAW's deck 3/4 layouts and deck-switching UI;
-  don't add 4-deck support. Forks can add it.
+- **References only, never copy:** `../Traktmixxx-RAW/` (CC BY-SA) and Mixxx's
+  bundled skins such as LateNight (GPL). Read them to learn how Mixxx widgets,
+  templates and controls work, then write our own XML, QSS and SVGs. **Never copy
+  files, code blocks or SVG artwork from them.** Doing so would bind this skin to
+  their licences. Mixxx control names and widget tags are Mixxx's interface, so
+  using those is fine.
+- **Approach:** build up from a minimal skin that loads, adding one small, targeted
+  section at a time until it resembles the target images.
+- **Scope: 2 decks only (A/B).** No 4-deck support or deck switching. Forks can add it.
 - **Scope rule: `target_images/` is the feature list.** They are screenshots of the
   owner's own Traktor setup. If a feature isn't in them, the owner doesn't use it
   and it isn't in the skin (no samplers, mics, aux, vinyl control, etc.) unless
@@ -35,8 +41,40 @@ moving from Traktor to Mixxx.
 - **Repo layout:** `skin/` is the Mixxx skin folder (`skin.xml`, `style.qss`,
   assets) and nothing else goes in it. Docs, `target_images/` and agent files live
   outside `skin/`.
-- **Official skin guide:** <https://github.com/mixxxdj/mixxx/wiki/Creating-Skins>
 - **Project brief:** `project_info.md`.
+- **Paths:** every path in this file is relative to the repo root
+  (`/Users/paulhayes/code/AI/traktor_skin/custom_taktor_skin`). For example,
+  `docs/sprints/v1/` is `<repo>/docs/sprints/v1/`. The RAW reference skin sits
+  outside the repo at `../Traktmixxx-RAW/`.
+
+## Reference docs
+
+Check these before guessing. Use the 2.5 versions where they exist.
+
+- **Creating skins (main guide, XML tags, templates, variables):**
+  <https://github.com/mixxxdj/mixxx/wiki/Creating-Skins>
+- **Skin layout tutorial (sizing, size policies, layouts):**
+  <https://github.com/mixxxdj/mixxx/wiki/Skin%20layout%20tutorial>
+- **Skin system changelog (what changed per Mixxx version):**
+  <https://github.com/mixxxdj/mixxx/wiki/skin_system_changelog>
+- **Colour schemes:** <https://github.com/mixxxdj/mixxx/wiki/Skin-Color-Scheme-Architecture>
+- **Mixxx controls (every `[Group],key` a widget can bind to):**
+  <https://manual.mixxx.org/2.5/en/chapters/appendix/mixxx_controls.html>
+- **Settings directory (where user skins go):**
+  <https://manual.mixxx.org/2.5/en/chapters/appendix/settings_directory.html>
+  - macOS: `~/Library/Containers/org.mixxx.mixxx/Data/Library/Application Support/Mixxx/skins/`
+  - Linux: `~/.mixxx/skins/`, or `~/.var/app/org.mixxx.Mixxx/.mixxx/skins/` for Flatpak
+- **Skin parser source (what each XML tag really accepts; the final authority):**
+  <https://github.com/mixxxdj/mixxx/blob/2.5/src/skin/legacy/legacyskinparser.cpp>
+- **Built-in tooltip IDs:**
+  <https://github.com/mixxxdj/mixxx/blob/2.5/src/skin/legacy/tooltips.cpp>
+- **Mixxx's bundled 2.5 skins (read-only reference, GPL, never copy):**
+  <https://github.com/mixxxdj/mixxx/tree/2.5/res/skins>. LateNight is the most
+  modern of them.
+- **Qt stylesheets (QSS):** <https://doc.qt.io/qt-6/stylesheet-reference.html>
+  and <https://doc.qt.io/qt-6/stylesheet-examples.html>
+- **Troubleshooting:** skin parse errors and warnings are written to `mixxx.log`
+  in the settings directory. Check it after every reload.
 
 ## Dev loop
 
@@ -48,9 +86,11 @@ moving from Traktor to Mixxx.
 
 ## Licence
 
-The reference skins are CC BY-SA 3.0 (RoundCorners by 22degrees, Traktmixxx by
-intialonso, Traktmixxx-RAW by djraw). Anything derived from them keeps that licence
-and those credits. Don't copy Native Instruments logos or artwork. Draw our own SVGs.
+Traktorixx is **CC BY-NC 4.0** (see `LICENSE`), © Paul Hayes (PaulHaze): free to
+use and adapt, but not commercially. That only holds while every file is original
+work, hence the never-copy rule above. RoundCorners, Traktmixxx and Traktmixxx-RAW
+are thanked in the README as inspiration. Don't copy Native Instruments logos or
+artwork. Draw our own SVGs.
 
 ## Mixxx skin conventions
 
@@ -62,8 +102,10 @@ and those credits. Don't copy Native Instruments logos or artwork. Draw our own 
   values through the skin XML's `<SetVariable>` / templates, not in QSS.
 - Mixxx widgets are driven by **controls** (`[Channel1],play`, `[Master],crossfader`,
   …). Look up control names in the Mixxx manual's controls reference. Don't guess them.
-- Prefer editing the existing templates over adding new ones. Each change should be
-  small enough for the owner to check visually in Mixxx before the next one starts.
+- Keep it small: one fixed layout, no small/medium/large variants, no settings
+  menus per section. Use templates only for real repetition (deck A/B, FX unit
+  1/2, mixer channels). Each change should be small enough for the owner to check
+  visually in Mixxx before the next one starts.
 
 ## Domain docs
 
@@ -100,9 +142,16 @@ All planning docs live in `docs/`. Create each file the first time it is needed.
 No GitHub Issues. Work is tracked as numbered sprint files in
 `docs/sprints/{epic}/`, worked one at a time and in order within an epic.
 
-### Current epic
+### Current epic: `v1`
 
-None yet. The first epic is planned once the initial grilling is finished.
+- Plan: `docs/roadmap.md` (item 1). Sprints: `docs/sprints/v1/`, with the overview
+  in `00_Overview.md` and sprints `01_…md` to `12_…md`.
+- Branches: epic branch `v1`, sprint branches `v1-{nn}` (`v1-04` →
+  `docs/sprints/v1/04_*.md`).
+- Audits: `docs/sprints/v1/audits/v1-{nn}-audit-{opus|astra}.md`, summary
+  `v1-{nn}-audit-summary.md`.
+- Each sprint is one small change that the owner checks visually in Mixxx before
+  the next sprint starts.
 
 ### Parked epics
 
@@ -116,11 +165,11 @@ None yet. The first epic is planned once the initial grilling is finished.
 ### Shared conventions
 
 - **Branch convention:** `{epic}-{nn}`. `{nn}` is the two-digit sprint number within
-  the epic, e.g. `deck-01`. The epic is everything before the trailing `-{nn}`, so
+  the epic, e.g. `v1-01`. The epic is everything before the trailing `-{nn}`, so
   an epic name may contain hyphens.
 - **Sprint file:** strip `-{nn}` from the branch to get the epic folder, then use the
   file in `docs/sprints/{epic}/` whose two-digit prefix matches `{nn}`
-  (`deck-02` → `docs/sprints/deck/02_*.md`). The whole file is the task scope.
+  (`v1-02` → `docs/sprints/v1/02_*.md`). The whole file is the task scope.
 - **Audits directory:** `docs/sprints/{epic}/audits/`
 - **Cross-cutting context:** `docs/roadmap.md`, `docs/spec.md`, `GLOSSARY.md`,
   `docs/adr/` and the matching `target_images/`. Read whichever parts bear on the change.
@@ -168,7 +217,8 @@ Used by `/audit-commit`, `/audit-sum`, `/audit-action` and `/summary`.
 
 ### `$new-task` context
 
-- Parent branch: the current epic's branch (none yet). Sprint branches merge into it.
+- Parent branch: `v1` (the epic branch). Sprint branches `v1-{nn}` merge into it,
+  and it is pushed after each merge.
 - Push flag: `true`
-- The next branch increments `{nn}` within the same epic (`deck-01` → `deck-02`).
+- The next branch increments `{nn}` within the same epic (`v1-01` → `v1-02`).
   Starting a new epic is the owner's call.
